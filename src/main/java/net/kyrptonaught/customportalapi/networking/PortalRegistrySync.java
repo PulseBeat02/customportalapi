@@ -2,7 +2,6 @@ package net.kyrptonaught.customportalapi.networking;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -40,15 +39,5 @@ public class PortalRegistrySync {
         buf.writeIdentifier(link.dimID);
         buf.writeInt(link.colorID);
         return ServerPlayNetworking.createS2CPacket(NetworkManager.SYNC_PORTALS, buf);
-    }
-
-    @Environment(EnvType.CLIENT)
-    public static void registerReceivePortalData() {
-        ClientPlayNetworking.registerGlobalReceiver(NetworkManager.SYNC_PORTALS, (client, handler, packet, sender) -> {
-            Identifier frameBlock = packet.readIdentifier();
-            Identifier dimID = packet.readIdentifier();
-            int colorId = packet.readInt();
-            PerWorldPortals.registerWorldPortal(new PortalLink(frameBlock, dimID, colorId));
-        });
     }
 }

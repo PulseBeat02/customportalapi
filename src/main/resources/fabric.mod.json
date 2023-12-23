@@ -24,9 +24,6 @@
     "main": [
       "net.kyrptonaught.customportalapi.CustomPortalsMod"
     ],
-    "client": [
-      "net.kyrptonaught.customportalapi.client.CustomPortalsModClient"
-    ],
     "server": [
       "net.kyrptonaught.customportalapi.networking.NetworkManager"
     ]

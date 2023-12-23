@@ -3,7 +3,6 @@ package net.kyrptonaught.customportalapi.api;
 import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.CustomPortalsMod;
-import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.event.PortalIgniteEvent;
 import net.kyrptonaught.customportalapi.event.PortalPreIgniteEvent;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
@@ -225,24 +224,6 @@ public class CustomPortalBuilder {
      */
     public CustomPortalBuilder registerBeforeTPEvent(Function<Entity, SHOULDTP> event) {
         portalLink.getBeforeTPEvent().register(event);
-        return this;
-    }
-
-    /**
-     * Register a sound to be played when the player in standing in the portal.
-     * CPASoundEventData is just a stub for PositionSoundAmbience as it does not exist serverside
-     */
-    public CustomPortalBuilder registerInPortalAmbienceSound(Function<PlayerEntity, CPASoundEventData> event) {
-        portalLink.getInPortalAmbienceEvent().register(event);
-        return this;
-    }
-
-    /**
-     * Register a sound to be played when the player teleports.
-     * CPASoundEventData is just a stub for PositionSoundAmbience as it does not exist serverside
-     */
-    public CustomPortalBuilder registerPostTPPortalAmbience(Function<PlayerEntity, CPASoundEventData> event) {
-        portalLink.getPostTpPortalAmbienceEvent().register(event);
         return this;
     }
 

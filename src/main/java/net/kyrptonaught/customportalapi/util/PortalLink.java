@@ -4,7 +4,6 @@ import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
 import net.kyrptonaught.customportalapi.CustomPortalBlock;
 import net.kyrptonaught.customportalapi.CustomPortalsMod;
 import net.kyrptonaught.customportalapi.event.CPAEvent;
-import net.kyrptonaught.customportalapi.event.CPASoundEventData;
 import net.kyrptonaught.customportalapi.event.PortalIgniteEvent;
 import net.kyrptonaught.customportalapi.event.PortalPreIgniteEvent;
 import net.kyrptonaught.customportalapi.portal.PortalIgnitionSource;
@@ -31,8 +30,6 @@ public class PortalLink {
 
     private Consumer<Entity> postTPEvent;
     private final CPAEvent<Entity, SHOULDTP> beforeTPEvent = new CPAEvent<>(SHOULDTP.CONTINUE_TP);
-    private final CPAEvent<PlayerEntity, CPASoundEventData> inPortalAmbienceEvent = new CPAEvent<>();
-    private final CPAEvent<PlayerEntity, CPASoundEventData> postTpPortalAmbienceEvent = new CPAEvent<>();
 
     private PortalIgniteEvent portalIgniteEvent = (player, world, portalPos, framePos, portalIgnitionSource) -> {
     };
@@ -68,14 +65,6 @@ public class PortalLink {
 
     public CPAEvent<Entity, SHOULDTP> getBeforeTPEvent() {
         return beforeTPEvent;
-    }
-
-    public CPAEvent<PlayerEntity, CPASoundEventData> getInPortalAmbienceEvent() {
-        return inPortalAmbienceEvent;
-    }
-
-    public CPAEvent<PlayerEntity, CPASoundEventData> getPostTpPortalAmbienceEvent() {
-        return postTpPortalAmbienceEvent;
     }
 
     public void setPostTPEvent(Consumer<Entity> event) {
